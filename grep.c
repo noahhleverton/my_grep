@@ -21,7 +21,7 @@ void check_options(char *option){
         whole_word = 0;
 }
 
-/* Print lines containing search term */
+/* Prints lines containing search term, highlighting the term in red */
 void print_line(char *current, char line[], char search_term[]){
 
     char *next;
@@ -88,14 +88,6 @@ int main(int argc, char *argv[]){
 
         line_counter ++;
     }
-
-    /* TODO: Change printing to highlight EVERY occurence of search_term in a line */
-
-    /*  set current index as position after the last found search term
-
-        while (line from index contains the search term) 
-            print search term in red
-            print string up to the next occurence*/
 
     fclose(filename);
     return 0;
