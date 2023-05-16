@@ -27,7 +27,6 @@ void print_line(char *found, char line[], char search_term[]){
     /* Print string before search term, search term in red, rest of string */
     printf("%.*s%s%s",(int)(found - line), line, RED, search_term);
     printf("%s%s", RESET_COLOUR, found + strlen(search_term));
-
 }
 
 /* 
@@ -75,7 +74,14 @@ int main(int argc, char *argv[]){
         line_counter ++;
     }
 
+    /* TODO: Change printing to highlight EVERY occurence of search_term in a line */
+
+    /*  set current index as position after the last found search term
+
+        while (line from index contains the search term) 
+            print search term in red
+            print string up to the next occurence*/
+
     fclose(filename);
     return 0;
-
 }
