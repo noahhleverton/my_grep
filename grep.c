@@ -22,11 +22,26 @@ void check_options(char *option){
 }
 
 /* Print lines containing search term */
-void print_line(char *found, char line[], char search_term[]){
+void print_line(char *current, char line[], char search_term[]){
 
-    /* Print string before search term, search term in red, rest of string */
-    printf("%.*s%s%s",(int)(found - line), line, RED, search_term);
-    printf("%s%s", RESET_COLOUR, found + strlen(search_term));
+    char *next;
+
+    current = strstr(line, search_term);
+
+    printf("%.*s",(int)(current - line), line);
+    printf("%s%s%s", RED, search_term, RESET_COLOUR);
+
+    while((next = strstr(current + strlen(search_term), search_term)) != NULL){
+
+        /* Print string between current search term and next search term */
+        printf("%.*s", (int)(next - current - strlen(search_term)), current + strlen(search_term)); 
+
+        printf("%s%s%s", RED, search_term, RESET_COLOUR);
+        current = next;
+    }
+
+    printf("%s", current + strlen(search_term));
+
 }
 
 /* 
